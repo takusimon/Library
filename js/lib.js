@@ -25,13 +25,46 @@ function addBookToLibrary(title,author,pages,read){
 }
 
 function appendTitle(title){
+    // Add title to "book"
     if (bookTitle.textContent){
         bookTitle.textContent = '';
     }
     bookTitle.textContent = title;
     bookDiv.appendChild(bookTitle);
-
 }
+
+function appendAuthor(author){
+    if (bookAuthor.textContent){
+        bookAuthor.textContent = '';
+    }
+
+    bookAuthor.textContent = author;
+    bookDiv.appendChild(bookAuthor);
+}
+
+function appendPageCount(pages){
+    if (bookPageCount.textContent){
+        bookPageCount.textContent = '';
+    }
+
+    bookPageCount.textContent = pages;
+    bookDiv.appendChild(bookPageCount);
+}
+
+function appendReadStatus(read){
+    if (bookRead.textContent){
+        bookRead.textContent = '';
+    }
+
+    if (read){
+        bookRead.textContent = "READ";
+    } else {
+        bookRead.textContent = "NOT YET";
+    }
+
+    bookDiv.appendChild(bookRead);
+}
+
 
 addBookToLibrary("Think Clearly","james Clear",230,true);
 
