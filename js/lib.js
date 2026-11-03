@@ -1,4 +1,5 @@
 const myLibrary = [];
+const displayedBooks = [];
 
 let shelf = document.querySelector(".shelf");
 let bookDiv = document.createElement("div");
@@ -6,6 +7,8 @@ let bookTitle = document.createElement("h3");
 let bookAuthor = document.createElement("p");
 let bookPageCount = document.createElement("p");
 let bookRead = document.createElement("p");
+
+bookDiv.setAttribute("class", "book" )
 
 function Book(title,author,pages,read){
     //Constructor Function that Makes book object
@@ -59,17 +62,36 @@ function appendReadStatus(read){
     if (read){
         bookRead.textContent = "READ";
     } else {
-        bookRead.textContent = "NOT YET";
+        bookRead.textContent = "NOT YET READ";
     }
 
     bookDiv.appendChild(bookRead);
 }
 
+function clearBook(){
+    bookDiv.textContent = "";
+}
 
-addBookToLibrary("Think Clearly","james Clear",230,true);
+function DisplayBooks(){
+    for (let book of myLibrary){
+        clearBook();
+        for (let prop in book){
+            switch(prop) {
+                case "title":
+                    appendTitle(`${book[prop]}`);
 
-for (let book of myLibrary) {
-    for (let prop in book) {
-        console.log(`${prop}:${book[prop]}`);
+                case "author":
+                    appendAuthor(`by ${book[prop]}`);
+                
+                case "pages":
+                    appendPageCount(`${prop}: ${book[prop]}`);
+                
+                case "read":
+                    appendReadStatus(book[prop]);
+            }
+        }
+        shelf.appendChild(bookDiv);
     }
 }
+addBookToLibrary("Think Clearly","james Clear",230,true);
+

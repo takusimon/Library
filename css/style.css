@@ -18,10 +18,21 @@ header {
     border-radius: 10px;
     margin-bottom:2rem;
 }
-h1 {
+h1,h3,p {
     text-align: center;
+    
+}
+
+h1 {
     font-size:3rem;
 }
+
+h3 { 
+    font-size:2rem;
+    margin:2rem;
+ }
+
+
 main {
     overflow:auto;
     grid-row:2/3;
@@ -37,6 +48,6 @@ footer {
     border-radius:10px;
     box-shadow:-4px -4px 2px var(--color-ice-cyan);
     width: 250px;
-    min-height:300px;
+    max-height:300px;
     margin:2rem;
 }
