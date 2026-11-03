@@ -1,0 +1,41 @@
+:root {
+    --color-obsidian-black:hsl(225,20%,4%);
+    --color-ice-cyan:hsl(190,100%,86%);
+    --color-cool-white:hsl(216,20%,96%);
+}
+
+body {
+    background-color: var(--color-obsidian-black);
+    color:var(--color-cool-white);
+    display:grid;
+    grid-template-rows: min-content 4fr min-content;
+    row-gap: 2rem;
+}
+header {
+    grid-row: 1/2;
+    border:1px solid var(--color-cool-white);
+    box-shadow: 4px 4px 8px var(--color-cool-white);
+    border-radius: 10px;
+    margin-bottom:2rem;
+}
+h1 {
+    text-align: center;
+    font-size:3rem;
+}
+main {
+    grid-row:2/3;
+    grid-template-columns: repeat(autofit,minmax(150px,1fr));
+    gap: 2rem;
+}
+footer {
+    grid-row:3/4;
+}
+.book {
+    border:1px solid var(--color-ice-cyan);
+    border-radius:10px;
+    box-shadow:-4px -4px 2px var(--color-ice-cyan);
+    max-width: max(17%,250px);
+    min-height: auto;
+    height:45%;
+    margin:2rem;
+}
