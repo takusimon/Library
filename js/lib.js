@@ -1,6 +1,14 @@
 const myLibrary = [];
 
+let shelf = document.querySelector(".shelf");
+let bookDiv = document.createElement("div");
+let bookTitle = document.createElement("h3");
+let bookAuthor = document.createElement("p");
+let bookPageCount = document.createElement("p");
+let bookRead = document.createElement("p");
+
 function Book(title,author,pages,read){
+    //Constructor Function that Makes book object
     if(!new.target){
         throw Error("You must use the 'new' Operator to call the constructor")
     }
@@ -12,8 +20,17 @@ function Book(title,author,pages,read){
 }
 
 function addBookToLibrary(title,author,pages,read){
-    let book = new Book(title,author,pages,read);
-    myLibrary.push(book);
+    // Adds new book to Library
+    myLibrary.push(new Book(title,author,pages,read));
+}
+
+function appendTitle(title){
+    if (bookTitle.textContent){
+        bookTitle.textContent = '';
+    }
+    bookTitle.textContent = title;
+    bookDiv.appendChild(bookTitle);
+
 }
 
 addBookToLibrary("Think Clearly","james Clear",230,true);
