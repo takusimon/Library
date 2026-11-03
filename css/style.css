@@ -8,7 +8,7 @@ body {
     background-color: var(--color-obsidian-black);
     color:var(--color-cool-white);
     display:grid;
-    grid-template-rows: min-content 4fr min-content;
+    grid-template-rows: min-content 1fr min-content;
     row-gap: 2rem;
 }
 header {
@@ -23,9 +23,11 @@ h1 {
     font-size:3rem;
 }
 main {
+    overflow:auto;
     grid-row:2/3;
-    grid-template-columns: repeat(autofit,minmax(150px,1fr));
-    gap: 2rem;
+    display:grid;
+    grid-template-columns:repeat(4,minmax(0, 1fr));
+    gap:2rem;
 }
 footer {
     grid-row:3/4;
@@ -34,8 +36,7 @@ footer {
     border:1px solid var(--color-ice-cyan);
     border-radius:10px;
     box-shadow:-4px -4px 2px var(--color-ice-cyan);
-    max-width: max(17%,250px);
-    min-height: auto;
-    height:45%;
+    width: 250px;
+    min-height:300px;
     margin:2rem;
 }
