@@ -48,11 +48,12 @@ footer {
     border-radius:10px;
     box-shadow:-4px -4px 2px var(--color-ice-cyan);
     width: 250px;
-    max-height:300px;
+    height:300px;
     margin:2rem;
     display:flex;
     flex-flow: column nowrap;
     gap:1rem;
+    position:relative;
 }
 
 #add-btn,#close-btn{
@@ -68,7 +69,7 @@ footer {
     background-color: var(--color-obsidian-black);
     box-shadow: 2px 2px 3px,
                 -2px -2px 3px var(--color-ice-cyan);
-    position: sticky;
+    position: absolute;
     top:90%;
     left:95%;
 }
@@ -77,6 +78,22 @@ footer {
     background-color: red;
     color:var(--color-cool-white);
 }
+
+#delete-bk-btn {
+    position:absolute;
+    bottom:95%;
+    left:95%;
+    border-radius: 100px;
+    background-color: grey;
+    color:var(--color-obsidian-black);
+
+}
+
+#delete-bk-btn:hover {
+    background-color: red;
+    color:var(--color-cool-white);
+}
+
 
 
 dialog:modal {

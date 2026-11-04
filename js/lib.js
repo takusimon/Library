@@ -39,6 +39,9 @@ function displayBooks(){
         let bookAuthor = document.createElement("p");
         let bookPageCount = document.createElement("p");
         let bookRead = document.createElement("p");
+        let deleteBook = document.createElement("button");
+        deleteBook.setAttribute("id","delete-bk-btn");
+        deleteBook.textContent = "X";
 
         for (let prop in book){
             switch(prop) {
@@ -54,7 +57,7 @@ function displayBooks(){
                     bookPageCount.textContent = `${prop}: ${book[prop]}`
                 
                 case "read":
-                    if (book.read === true){
+                    if (book[prop] == 'true'){
                         bookRead.textContent = "READ";
                         } else {
                         bookRead.textContent = "NOT YET READ";
@@ -62,7 +65,7 @@ function displayBooks(){
                     bookDiv.appendChild(bookRead);
             }
         }
-        bookDiv.append(bookTitle,bookAuthor,bookPageCount,bookRead);
+        bookDiv.append(bookTitle,bookAuthor,bookPageCount,bookRead,deleteBook);
         shelf.appendChild(bookDiv);
     }
     myLibrary.pop();
