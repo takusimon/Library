@@ -50,6 +50,9 @@ footer {
     width: 250px;
     max-height:300px;
     margin:2rem;
+    display:flex;
+    flex-flow: column nowrap;
+    gap:1rem;
 }
 
 #add-btn,#close-btn{

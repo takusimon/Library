@@ -34,6 +34,7 @@ function displayBooks(){
         displayedBooks.push(book);
         let bookDiv = document.createElement("div");
         bookDiv.setAttribute("class", "book" );
+        bookDiv.setAttribute("id", book["id"]);
         let bookTitle = document.createElement("h3");
         let bookAuthor = document.createElement("p");
         let bookPageCount = document.createElement("p");
@@ -53,7 +54,7 @@ function displayBooks(){
                     bookPageCount.textContent = `${prop}: ${book[prop]}`
                 
                 case "read":
-                    if (read){
+                    if (book.read === true){
                         bookRead.textContent = "READ";
                         } else {
                         bookRead.textContent = "NOT YET READ";
