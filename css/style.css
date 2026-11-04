@@ -18,7 +18,7 @@ header {
     border-radius: 10px;
     margin-bottom:2rem;
 }
-h1,h3,p {
+h1,h2,p {
     text-align: center;
     
 }
@@ -68,4 +68,39 @@ footer {
     position: sticky;
     top:90%;
     left:95%;
+}
+
+
+
+dialog:modal {
+    height:50%;
+    width:50%;
+    border-radius: 20px;
+    background-color:var(--color-obsidian-black);
+    color:var(--color-cool-white);
+    box-shadow:4px 4px 4px var(--color-ice-cyan);
+}
+
+
+form,.form-row,dialog:modal{
+    display:flex;
+    flex-flow:column nowrap;
+}
+
+form {
+    gap:2rem;
+    margin-bottom: auto;
+}
+
+input {
+    border-radius: 10px;
+    outline: 1px solid var(--color-cool-white);
+    border:0;
+    background-color: var(--color-obsidian-black);
+    color:var(--color-cool-white);
+    margin-top:1rem;
+}
+
+input:focus {
+    box-shadow:4px 4px 3px  gold
 }
