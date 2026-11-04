@@ -12,7 +12,11 @@
             <h1>My Library</h1>
         </header>
         <main class="shelf">
-            
+            <button id="add-btn" command="show-modal"  commandfor="book-form">+</button>
+
+            <dialog id="book-form">
+                <button id="close-btn" commandfor="book-form" command="close">X</button>
+            </dialog>
         </main>
         <footer>
             <p>By TakuSimon</p>

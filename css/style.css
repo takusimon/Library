@@ -51,3 +51,21 @@ footer {
     max-height:300px;
     margin:2rem;
 }
+
+#add-btn,#close-btn {
+    width:50px;
+    height:50px;
+    font-size:2rem;
+    border-radius:100px;
+    border:0px;
+}
+
+#add-btn {
+    color:var(--color-cool-white);
+    background-color: var(--color-obsidian-black);
+    box-shadow: 2px 2px 3px,
+                -2px -2px 3px var(--color-ice-cyan);
+    position: sticky;
+    top:90%;
+    left:95%;
+}
