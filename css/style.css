@@ -52,7 +52,7 @@ footer {
     margin:2rem;
 }
 
-#add-btn,#close-btn {
+#add-btn,#close-btn{
     width:50px;
     height:50px;
     font-size:2rem;
@@ -70,6 +70,10 @@ footer {
     left:95%;
 }
 
+#close-btn {
+    background-color: red;
+    color:var(--color-cool-white);
+}
 
 
 dialog:modal {
@@ -103,4 +107,16 @@ input {
 
 input:focus {
     box-shadow:4px 4px 3px  gold
+}
+
+.btns-container {
+    display:flex;
+    justify-content: space-between;
+}
+
+#submit-btn {
+    background-color: var(--color-ice-cyan);
+    border-radius: 10px;
+    border:0;
+    color:var(--color-obsidian-black)
 }

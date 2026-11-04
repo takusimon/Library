@@ -95,3 +95,7 @@ function DisplayBooks(){
 }
 addBookToLibrary("Think Clearly","james Clear",230,true);
 
+const dialog = document.querySelector("#book-form");
+const form = document.querySelector("#add-book");
+
+dialog.addEventListener("close", () => form.reset());
