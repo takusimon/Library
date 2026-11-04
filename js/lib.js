@@ -72,9 +72,10 @@ function clearBook(){
     bookDiv.textContent = "";
 }
 
-function DisplayBooks(){
+function displayBooks(){
     for (let book of myLibrary){
         clearBook();
+        displayedBooks.push(book);
         for (let prop in book){
             switch(prop) {
                 case "title":
@@ -92,10 +93,33 @@ function DisplayBooks(){
         }
         shelf.appendChild(bookDiv);
     }
+    myLibrary.pop();
 }
-addBookToLibrary("Think Clearly","james Clear",230,true);
+function bookCreator(event){
+    event.preventDefault();
+
+    let title,
+        author,
+        pages,
+        read,
+        book;
+    
+    title = form.title.value;
+    author = form.author.value;
+    pages = form.pages.value;
+    read = form.read.value;
+
+    form.reset()
+
+    addBookToLibrary(title,author,pages,read);
+    displayBooks();
+}
 
 const dialog = document.querySelector("#book-form");
 const form = document.querySelector("#add-book");
+const submitBtn = document.querySelector("#submit-btn");
 
 dialog.addEventListener("close", () => form.reset());
+
+
+submitBtn.addEventListener("click",bookCreator);
