@@ -2,13 +2,13 @@ const myLibrary = [];
 const displayedBooks = [];
 
 let shelf = document.querySelector(".shelf");
-let bookDiv = document.createElement("div");
-let bookTitle = document.createElement("h3");
-let bookAuthor = document.createElement("p");
-let bookPageCount = document.createElement("p");
-let bookRead = document.createElement("p");
 
-bookDiv.setAttribute("class", "book" )
+
+
+
+
+
+
 
 function Book(title,author,pages,read){
     //Constructor Function that Makes book object
@@ -27,70 +27,41 @@ function addBookToLibrary(title,author,pages,read){
     myLibrary.push(new Book(title,author,pages,read));
 }
 
-function appendTitle(title){
-    // Add title to "book"
-    if (bookTitle.textContent){
-        bookTitle.textContent = '';
-    }
-    bookTitle.textContent = title;
-    bookDiv.appendChild(bookTitle);
-}
-
-function appendAuthor(author){
-    if (bookAuthor.textContent){
-        bookAuthor.textContent = '';
-    }
-
-    bookAuthor.textContent = author;
-    bookDiv.appendChild(bookAuthor);
-}
-
-function appendPageCount(pages){
-    if (bookPageCount.textContent){
-        bookPageCount.textContent = '';
-    }
-
-    bookPageCount.textContent = pages;
-    bookDiv.appendChild(bookPageCount);
-}
-
-function appendReadStatus(read){
-    if (bookRead.textContent){
-        bookRead.textContent = '';
-    }
-
-    if (read){
-        bookRead.textContent = "READ";
-    } else {
-        bookRead.textContent = "NOT YET READ";
-    }
-
-    bookDiv.appendChild(bookRead);
-}
-
-function clearBook(){
-    bookDiv.textContent = "";
-}
 
 function displayBooks(){
     for (let book of myLibrary){
-        clearBook();
+        
         displayedBooks.push(book);
+        let bookDiv = document.createElement("div");
+        bookDiv.setAttribute("class", "book" );
+        let bookTitle = document.createElement("h3");
+        let bookAuthor = document.createElement("p");
+        let bookPageCount = document.createElement("p");
+        let bookRead = document.createElement("p");
+
         for (let prop in book){
             switch(prop) {
                 case "title":
-                    appendTitle(`${book[prop]}`);
+                    bookTitle.textContent = `${book[prop]}`;
+                    
 
                 case "author":
-                    appendAuthor(`by ${book[prop]}`);
+                    
+                    bookAuthor.textContent = `by ${book[prop]}`;
                 
                 case "pages":
-                    appendPageCount(`${prop}: ${book[prop]}`);
+                    bookPageCount.textContent = `${prop}: ${book[prop]}`
                 
                 case "read":
-                    appendReadStatus(book[prop]);
+                    if (read){
+                        bookRead.textContent = "READ";
+                        } else {
+                        bookRead.textContent = "NOT YET READ";
+                     }
+                    bookDiv.appendChild(bookRead);
             }
         }
+        bookDiv.append(bookTitle,bookAuthor,bookPageCount,bookRead);
         shelf.appendChild(bookDiv);
     }
     myLibrary.pop();
@@ -101,8 +72,7 @@ function bookCreator(event){
     let title,
         author,
         pages,
-        read,
-        book;
+        read;
     
     title = form.title.value;
     author = form.author.value;
