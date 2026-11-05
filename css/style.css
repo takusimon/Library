@@ -94,8 +94,14 @@ footer {
     color:var(--color-cool-white);
 }
 
+.read-btn {
+    margin-top:2rem;
+}
 
-
+.read-btn:hover {
+    background-color:var(--color-ice-cyan);
+    color:var(--color-obsidian-black);
+}
 dialog:modal {
     height:50%;
     width:50%;

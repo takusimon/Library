@@ -34,6 +34,8 @@ function displayBooks(){
         let deleteBook = document.createElement("button");
         deleteBook.setAttribute("class","delete-bk-btn");
         deleteBook.textContent = "X";
+        let readBtn = document.createElement("button");
+        readBtn.setAttribute("class","read-btn");
 
         for (let prop in book){
             switch(prop) {
@@ -52,14 +54,16 @@ function displayBooks(){
                 case "read":
                     if (book[prop] == 'true'){
                         bookRead.textContent = "READ";
+                        readBtn.textContent = "Mark Unread";
                         } else {
                         bookRead.textContent = "NOT YET READ";
+                        readBtn.textContent = "Mark Read";
                      }
                     break;
                 
             }
         }
-        bookDiv.append(bookTitle,bookAuthor,bookPageCount,bookRead,deleteBook);
+        bookDiv.append(bookTitle,bookAuthor,bookPageCount,deleteBook,bookRead,readBtn);
         shelf.appendChild(bookDiv);
     }
 }
@@ -99,5 +103,20 @@ shelf.addEventListener('click',(event)=> {
 
         myLibrary.splice(index,1);
         book.remove();
+    }
+})
+
+shelf.addEventListener('click',(event)=> {
+    if (event.target.classList.contains("read-btn")){
+        const clickedBtn = event.target;
+        const readElement = event.target.previousElementSibling;
+        const readStatus = readElement.textContent;
+        if (readStatus === "READ"){
+            readElement.textContent = "NOT YET READ";
+            clickedBtn.textContent = "Mark Read";
+        } else {
+            readElement.textContent = "READ";
+            clickedBtn.textContent = "Mark Unread";
+        }
     }
 })
