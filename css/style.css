@@ -79,7 +79,7 @@ footer {
     color:var(--color-cool-white);
 }
 
-#delete-bk-btn {
+.delete-bk-btn {
     position:absolute;
     bottom:95%;
     left:95%;
@@ -89,7 +89,7 @@ footer {
 
 }
 
-#delete-bk-btn:hover {
+.delete-bk-btn:hover {
     background-color: red;
     color:var(--color-cool-white);
 }

@@ -1,14 +1,6 @@
 const myLibrary = [];
-const displayedBooks = [];
 
 let shelf = document.querySelector(".shelf");
-
-
-
-
-
-
-
 
 function Book(title,author,pages,read){
     //Constructor Function that Makes book object
@@ -29,32 +21,33 @@ function addBookToLibrary(title,author,pages,read){
 
 
 function displayBooks(){
+    shelf.querySelectorAll(".book").forEach(book => book.remove());
     for (let book of myLibrary){
         
-        displayedBooks.push(book);
         let bookDiv = document.createElement("div");
         bookDiv.setAttribute("class", "book" );
-        bookDiv.setAttribute("id", book["id"]);
+        bookDiv.dataset.id = book.id;
         let bookTitle = document.createElement("h3");
         let bookAuthor = document.createElement("p");
         let bookPageCount = document.createElement("p");
         let bookRead = document.createElement("p");
         let deleteBook = document.createElement("button");
-        deleteBook.setAttribute("id","delete-bk-btn");
+        deleteBook.setAttribute("class","delete-bk-btn");
         deleteBook.textContent = "X";
 
         for (let prop in book){
             switch(prop) {
                 case "title":
                     bookTitle.textContent = `${book[prop]}`;
-                    
+                    break;                 
 
                 case "author":
-                    
                     bookAuthor.textContent = `by ${book[prop]}`;
+                    break;
                 
                 case "pages":
-                    bookPageCount.textContent = `${prop}: ${book[prop]}`
+                    bookPageCount.textContent = `${prop}: ${book[prop]}`;
+                    break;
                 
                 case "read":
                     if (book[prop] == 'true'){
@@ -62,13 +55,13 @@ function displayBooks(){
                         } else {
                         bookRead.textContent = "NOT YET READ";
                      }
-                    bookDiv.appendChild(bookRead);
+                    break;
+                
             }
         }
         bookDiv.append(bookTitle,bookAuthor,bookPageCount,bookRead,deleteBook);
         shelf.appendChild(bookDiv);
     }
-    myLibrary.pop();
 }
 function bookCreator(event){
     event.preventDefault();
@@ -97,3 +90,14 @@ dialog.addEventListener("close", () => form.reset());
 
 
 submitBtn.addEventListener("click",bookCreator);
+
+shelf.addEventListener('click',(event)=> {
+    if(event.target.classList.contains("delete-bk-btn")){
+        const book = event.target.closest("[data-id]")
+        const bookId = book.dataset.id;
+        const index = myLibrary.findIndex(book => book.id === bookId);
+
+        myLibrary.splice(index,1);
+        book.remove();
+    }
+})
