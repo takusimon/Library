@@ -51,7 +51,7 @@ footer {
     height:300px;
     margin:2rem;
     display:flex;
-    flex-flow: column nowrap;
+    flex-flow: column wrap;
     gap:1rem;
     position:relative;
 }
@@ -96,6 +96,8 @@ footer {
 
 .read-btn {
     margin-top:2rem;
+    position:absolute;
+    top:69%;
 }
 
 .read-btn:hover {
@@ -103,8 +105,8 @@ footer {
     color:var(--color-obsidian-black);
 }
 dialog:modal {
-    height:50%;
-    width:50%;
+    height:80%;
+    width:50vw;
     border-radius: 20px;
     background-color:var(--color-obsidian-black);
     color:var(--color-cool-white);
