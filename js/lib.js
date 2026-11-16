@@ -1,72 +1,67 @@
-const myLibrary = [];
-
-let shelf = document.querySelector(".shelf");
-
-function Book(title,author,pages,read){
-    //Constructor Function that Makes book object
-    if(!new.target){
-        throw Error("You must use the 'new' Operator to call the constructor")
+class Book {
+    constructor(title,author,pages,read){
+        this.title = title;
+        this.author = author;
+        this.pages = pages;
+        this.read = read;
+        this.id = crypto.randomUUID();
     }
-    this.title = title;
-    this.author = author;
-    this.pages = pages;
-    this.read = read;
-    this.id = crypto.randomUUID();
-}
 
-function addBookToLibrary(title,author,pages,read){
-    // Adds new book to Library
-    myLibrary.push(new Book(title,author,pages,read));
-}
+    static library = [];
+    static shelf = document.querySelector(".shelf");
 
+    static addBookToLibrary (title,author,pages,read){
+        this.library.push(new Book(title,author,pages,read))
+    }
 
-function displayBooks(){
-    shelf.querySelectorAll(".book").forEach(book => book.remove());
-    for (let book of myLibrary){
-        
-        let bookDiv = document.createElement("div");
-        bookDiv.setAttribute("class", "book" );
-        bookDiv.dataset.id = book.id;
-        let bookTitle = document.createElement("h3");
-        let bookAuthor = document.createElement("p");
-        let bookPageCount = document.createElement("p");
-        let bookRead = document.createElement("p");
-        let deleteBook = document.createElement("button");
-        deleteBook.setAttribute("class","delete-bk-btn");
-        deleteBook.textContent = "X";
-        let readBtn = document.createElement("button");
-        readBtn.setAttribute("class","read-btn");
+    static displayBooks(){
+        this.shelf.querySelectorAll(".book").forEach(book => book.remove());
+        for (let book of this.library){
+            let bookDiv = document.createElement("div");
+            bookDiv.setAttribute("class", "book");
+            bookDiv.dataset.id = book.id;
+            let bookTitle = document.createElement("h3");
+            let bookAuthor = document.createElement("p");
+            let bookPageCount = document.createElement("p");
+            let bookRead = document.createElement("p");
+            let deleteBook = document.createElement("button");
+            deleteBook.setAttribute("class","delete-bk-btn");
+            deleteBook.textContent = "X";
+            let readBtn = document.createElement("button");
+            readBtn.setAttribute("class","read-btn");
 
-        for (let prop in book){
-            switch(prop) {
-                case "title":
-                    bookTitle.textContent = `${book[prop]}`;
-                    break;                 
+            for (let prop in book){
+                switch(prop) {
+                    case "title":
+                     bookTitle.textContent = `${book[prop]}`;
+                        break;                 
 
-                case "author":
-                    bookAuthor.textContent = `by ${book[prop]}`;
-                    break;
+                    case "author":
+                        bookAuthor.textContent = `by ${book[prop]}`;
+                        break;
                 
-                case "pages":
-                    bookPageCount.textContent = `${prop}: ${book[prop]}`;
-                    break;
+                    case "pages":
+                        bookPageCount.textContent = `${prop}: ${book[prop]}`;
+                        break;
                 
-                case "read":
-                    if (book[prop] == 'true'){
+                    case "read":
+                        if (book[prop] == 'true'){
                         bookRead.textContent = "READ";
                         readBtn.textContent = "Mark Unread";
                         } else {
                         bookRead.textContent = "NOT YET READ";
                         readBtn.textContent = "Mark Read";
                      }
-                    break;
+                        break;
                 
+                }
             }
+            bookDiv.append(bookTitle,bookAuthor,bookPageCount,deleteBook,bookRead,readBtn);
+            this.shelf.appendChild(bookDiv);
         }
-        bookDiv.append(bookTitle,bookAuthor,bookPageCount,deleteBook,bookRead,readBtn);
-        shelf.appendChild(bookDiv);
     }
 }
+
 function bookCreator(event){
     event.preventDefault();
 
@@ -82,8 +77,8 @@ function bookCreator(event){
 
     form.reset()
 
-    addBookToLibrary(title,author,pages,read);
-    displayBooks();
+    Book.addBookToLibrary(title,author,pages,read);
+    Book.displayBooks();
 }
 
 const dialog = document.querySelector("#book-form");
@@ -95,7 +90,7 @@ dialog.addEventListener("close", () => form.reset());
 
 submitBtn.addEventListener("click",bookCreator);
 
-shelf.addEventListener('click',(event)=> {
+Book.shelf.addEventListener('click',(event)=> {
     if(event.target.classList.contains("delete-bk-btn")){
         const book = event.target.closest("[data-id]")
         const bookId = book.dataset.id;
@@ -106,7 +101,7 @@ shelf.addEventListener('click',(event)=> {
     }
 })
 
-shelf.addEventListener('click',(event)=> {
+Book.shelf.addEventListener('click',(event)=> {
     if (event.target.classList.contains("read-btn")){
         const clickedBtn = event.target;
         const readElement = event.target.previousElementSibling;
