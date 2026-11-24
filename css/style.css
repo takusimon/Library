@@ -148,3 +148,8 @@ input:focus {
     border:0;
     color:var(--color-obsidian-black)
 }
+
+.error {
+    color:red;
+    margin-top: .5rem;
+}

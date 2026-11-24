@@ -84,12 +84,41 @@ function bookCreator(event){
 const dialog = document.querySelector("#book-form");
 const form = document.querySelector("#add-book");
 const submitBtn = document.querySelector("#submit-btn");
+const title = document.getElementById("title");
+const titleError = document.getElementById("title-error");
+const author = document.getElementById("author");
+const authorError = document.getElementById("author-error");
 
 dialog.addEventListener("close", () => form.reset());
 
+title.addEventListener("input",() => {
+    titleError.textContent = "";
+    if(!title.validity.valid){
+        showTitleError()
+    }     
+})
 
-submitBtn.addEventListener("click",bookCreator);
+author.addEventListener("input",() => {
+    authorError.textContent = "";
+    if(!author.validity.valid){
+        showAuthorError();
+    }
+})
+submitBtn.addEventListener("click",(event) => {
+    if(title.validity.valid && author.validity.valid && pages.validity.valid){
+        bookCreator(event);
+} else {
+    showTitleError();
+    showAuthorError();
+}
+});
 
+function showTitleError () {
+    titleError.textContent = "A book without a title! How Strange?";
+ }
+function showAuthorError () {
+    authorError.textContent = "Who wrote the book?";
+}
 Book.shelf.addEventListener('click',(event)=> {
     if(event.target.classList.contains("delete-bk-btn")){
         const book = event.target.closest("[data-id]")

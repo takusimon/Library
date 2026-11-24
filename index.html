@@ -1,66 +1,63 @@
-<!DOCTYPE>
+<!DOCTYPE >
 <html lang="en">
-    <head>
+  <head>
+    <meta charset="utf-8" />
+    <title>My Library</title>
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/lib.js" defer></script>
+  </head>
 
-        <meta charset="utf-8">
-        <title>My Library</title>
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/lib.js" defer></script>
+  <body>
+    <header>
+      <h1>My Library</h1>
+    </header>
 
-    </head>
+    <main class="shelf">
+      <button id="add-btn" command="show-modal" commandfor="book-form">
+        +
+      </button>
 
-    <body>
+      <dialog id="book-form">
+        <form id="add-book" novalidate>
+          <div class="form-row">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" required />
+            <span id="title-error" class="error"></span>
+          </div>
 
-        <header>
-            <h1>My Library</h1>
-        </header>
+          <div class="form-row">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" required/>
+            <span id="author-error" class="error"></span>
+          </div>
 
-        <main class="shelf">
-            <button id="add-btn" command="show-modal"  commandfor="book-form">+</button>
+          <div class="form-row">
+            <label for="pages">Pages</label>
+            <input type="number" max="1500" id="pages" name="pages" required />
+          </div>
 
-            <dialog id="book-form">
-                <form id="add-book">
+          <fieldset>
+            <legend>Read?</legend>
 
-                    <div class="form-row">
-                        <label for="title">Title</label>
-                        <input type="text" id="title" name="title">
-                    </div>
+            <label for="read">Yes</label>
+            <input type="radio" id="read" name="read" value="true" checked />
 
-                    <div class="form-row">
-                        <label for="author">Author</label>
-                        <input type="text" id="author" name="author">
-                    </div>
+            <label for="not-read">No</label>
+            <input type="radio" id="not-read" name="read" value="false" />
+          </fieldset>
+        </form>
+        <div class="btns-container">
+          <button id="close-btn" commandfor="book-form" command="close">
+            X
+          </button>
+          <button id="submit-btn" form="book-form" type="submit">Submit</button>
+        </div>
+      </dialog>
+    </main>
 
-                    <div class="form-row">
-                        <label for="pages">Pages</label>
-                        <input type="number" max="1500" id="pages" name="pages">
-                    </div>
-
-                    
-                    <fieldset>
-                        <legend>Read?</legend>
-
-                        <label for="read">Yes</label>
-                        <input type="radio" id="read" name="read" value="true"/checked>
-
-                        <label for="not-read">No</label>
-                        <input type="radio" id="not-read" name="read" value="false"/>
-                    </fieldset>
-
-                </form>
-                <div class="btns-container">
-                    <button id="close-btn" commandfor="book-form" command="close">X</button>
-                    <button id="submit-btn" for="book-form" type="submit">Submit</button>
-                </div>
-                
-            </dialog>
-
-        </main>
-
-        <footer>
-            <h2>By TakuSimon</h2>
-        </footer>
-
-    </body>
+    <footer>
+      <h2>By TakuSimon</h2>
+    </footer>
+  </body>
 </html>
