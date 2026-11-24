@@ -88,6 +88,8 @@ const title = document.getElementById("title");
 const titleError = document.getElementById("title-error");
 const author = document.getElementById("author");
 const authorError = document.getElementById("author-error");
+const pages = document.getElementById("pages");
+const pageError = document.getElementById("page-error");
 
 dialog.addEventListener("close", () => form.reset());
 
@@ -104,12 +106,19 @@ author.addEventListener("input",() => {
         showAuthorError();
     }
 })
+pages.addEventListener("input",() => {
+    pageError.textContent = "";
+    if(!pages.validity.valid){
+        showPageError();
+    }
+})
 submitBtn.addEventListener("click",(event) => {
     if(title.validity.valid && author.validity.valid && pages.validity.valid){
         bookCreator(event);
 } else {
     showTitleError();
     showAuthorError();
+    showPageError();
 }
 });
 
@@ -118,6 +127,9 @@ function showTitleError () {
  }
 function showAuthorError () {
     authorError.textContent = "Who wrote the book?";
+}
+function showPageError() {
+    pageError.textContent = "How Long is the book?"
 }
 Book.shelf.addEventListener('click',(event)=> {
     if(event.target.classList.contains("delete-bk-btn")){
